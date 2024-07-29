@@ -25,23 +25,28 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			if (format[i] == 'c')
+			char nextchar = format[++i];
+
+			if (nextchar == 'c')
 			{
 				wchar((char)va_arg(args, int), &chnum);
 			}
-			else if (format[i] == 's')
+			else if (nextchar == 's')
 			{
 				wstring(va_arg(args, char *), &chnum);
 			}
-			else if (format[i] == '%')
+			else if (nextchar  == 'd' ||  nextchar == 'i')
+			{
+				wnum(va_arg(args, int), &chnum);
+			}
+			else if (nextchar == '%')
+			{
+				wchar('%', &chnum);
+			}
+			else
 			{
 				wchar('%', &chnum);
 				wchar(format[i], &chnum);
-			}
-			else if (format[i] == 'd' ||  format[i] == 'i')
-			{
-				wchar(va_arg(args, int), &chnum);
 			}
 		}
 		else
@@ -52,7 +57,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (chnum);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> aa6f29656bc4eff0afd64a34c2f4a2f35cafcb09
