@@ -1,50 +1,49 @@
 #include "main.h"
 
 /**
- * _printf - produces output according to format
- * @format: character string
- *
- * Return: chnum
+ * _printf - the replica of printf
+ * 
+ * Return: the number of characters printed
  */
-
 
 int _printf(const char *format, ...)
 {
-	int len = strlen(format);
-	int chnum = 0;
-	int i;
-	va_list args;
-
-	va_start(args, format);
-
-	for (i = 0; i < len; i++)
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			if (format[i] == 'c')
-			{
-				wchar((char)va_arg(args, int), &chnum);
-			}
-			else if (format[i] == 's')
-			{
-				wstring(va_arg(args, char *), &chnum);
-			}
-			else if (format[i] == '%')
-			{
-				wchar('%', &chnum);
-				wchar(format[i], &chnum);
-			}
-			else if (format[i] == 'd' ||  format[i] == 'i')
-			{
-				wchar(va_arg(args, int), &chnum);
-			}
-		}
-		else
-		{
-			wchar(format[i], &chnum);
-		}
-	}
-	va_end(args);
-	return (chnum);
+    int i, count = 0;
+    va_list args;
+    va_start(args, format);
+    for (i = 0; format[i] != '\0'; i++)
+    {
+        if (format[i] == '%')
+        {
+            if (format[i+1] == 'c')
+            {
+                int c = va_arg(args, int);
+                write (1, &c, 1);
+                i++;
+                count++;
+            }
+            else if (format[i+1] == 's')
+            {
+                char* s = va_arg(args, char*);
+                int len = _strlen(s);
+                write(1, s, len);
+                i++;
+                count += len;
+            }
+            else if (format[i] == '%')
+            {
+                char per = '%';
+                write(1, &per, 1);
+                i++;
+                count++;
+            }
+        }
+        else
+        {
+            write(1, &format[i], 1);
+            count++;
+        }
+    }
+    va_end(args);
+    return (count);
 }
