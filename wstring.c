@@ -11,8 +11,8 @@
 
 void wstring(char *s, int *chnum)
 {
-        int ln = strlen(s);
+	int ln = strlen(s);
 
-        write(1, s, ln);
-        *chnum = *chnum + ln;
+	write(1, s, ln);
+	*chnum = *chnum + ln;
 }

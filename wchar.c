@@ -10,6 +10,6 @@
 
 void wchar(char c, int *chnum)
 {
-        write(1, &c, 1);
-        (*chnum)++;
+	write(1, &c, 1);
+	(*chnum)++;
 }
