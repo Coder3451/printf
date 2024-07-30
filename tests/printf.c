@@ -1,22 +1,17 @@
 #include "main.h"
-
 /**
  * _printf - produces output according to format
  * @format: character string
- *
  * Return: chnum
  */
-
 
 int _printf(const char *format, ...)
 {
 	int len = strlen(format);
-	int chnum = 0;
-	int i;
+	int i, chnum = 0;
 	va_list args;
 
 	va_start(args, format);
-
 	for (i = 0; i < len; i++)
 	{
 		if (format[i] == '%')
@@ -24,21 +19,24 @@ int _printf(const char *format, ...)
 			char nextchar = format[++i];
 
 			if (nextchar == 'c')
-			{
 				wchar((char)va_arg(args, int), &chnum);
-			}
 			else if (nextchar == 's')
-			{
 				wstring(va_arg(args, char *), &chnum);
-			}
 			else if (nextchar  == 'd' ||  nextchar == 'i')
-			{
 				wnum(va_arg(args, int), &chnum);
-			}
-			else if (nextchar == '%')
+			else if (nextchar == 'u')
+				wunsigned(va_arg(args, unsigned int), &chnum);
+			else if (nextchar == 'o')
+				woctal(va_arg(args, unsigned int), &chnum);
+			else if (nextchar == 'x' || nextchar == 'X')
 			{
-				wchar('%', &chnum);
+				whexadec(va_arg(args, unsigned int), &chnum, 0);
+				whexadec(va_arg(args, unsigned int), &chnum, 1);
 			}
+			else if (nextchar == 'p')
+				wptr(va_arg(args, void *), &chnum);
+			else if (nextchar == '%')
+				wchar('%', &chnum);
 			else
 			{
 				wchar('%', &chnum);
@@ -46,9 +44,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
 			wchar(format[i], &chnum);
-		}
 	}
 	va_end(args);
 	return (chnum);
