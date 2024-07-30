@@ -2,20 +2,20 @@
 
 /**
  * wbinary - converts an unsigned integer to a binary string and prints it
- * @n: 
- * @chnum:
+ * @n: the integer to be converted
+ * @chnum: points to the counter
  */
 
 void wbinary(unsigned int n, int *chnum)
 {
-	if(n == 0)
+	char buffer[32];
+	int i = 0;
+
+	if (n == 0)
 	{
 		wchar('0', chnum);
 		return;
 	}
-
-	char buffer[32];
-	int i = 0;
 
 	while (n > 0)
 	{
