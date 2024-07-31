@@ -4,7 +4,6 @@
  * @format: character string
  * Return: chnum
  */
-
 int _printf(const char *format, ...)
 {
 	int len = strlen(format);
@@ -19,24 +18,25 @@ int _printf(const char *format, ...)
 			char nextchar = format[++i];
 
 			if (nextchar == 'c')
-				wchar((char)va_arg(args, int), &chnum);
-			else if (nextchar == 's')
-				wstring(va_arg(args, char *), &chnum);
-			else if (nextchar  == 'd' ||  nextchar == 'i')
-				wnum(va_arg(args, int), &chnum);
-			else if (nextchar == 'u')
-				wunsigned(va_arg(args, unsigned int), &chnum);
-			else if (nextchar == 'o')
-				woctal(va_arg(args, unsigned int), &chnum);
-			else if (nextchar == 'x' || nextchar == 'X')
 			{
-				whexadec(va_arg(args, unsigned int), &chnum, 0);
-				whexadec(va_arg(args, unsigned int), &chnum, 1);
+				wchar((char)va_arg(args, int), &chnum);
 			}
-			else if (nextchar == 'p')
-				wptr(va_arg(args, void *), &chnum);
+			else if (nextchar == 's')
+			{
+				wstring(va_arg(args, char *), &chnum);
+			}
+			else if (nextchar  == 'd' ||  nextchar == 'i')
+			{
+				wnum(va_arg(args, int), &chnum);
+			}
 			else if (nextchar == '%')
+			{
 				wchar('%', &chnum);
+			}
+			else if (nextchar == 'b')
+			{
+				wbinary(va_arg(args, unsigned int), &chnum);
+			}
 			else
 			{
 				wchar('%', &chnum);
@@ -44,7 +44,9 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
+		{
 			wchar(format[i], &chnum);
+		}
 	}
 	va_end(args);
 	return (chnum);

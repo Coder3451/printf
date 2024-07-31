@@ -13,5 +13,6 @@ void wunsigned(unsigned int num, int *chnum);
 void woctal(unsigned int num, int *chnum);
 void whexadec(unsigned int num, int *chnum, int upper);
 void wptr(void *ptr, int *chnum);
+void wbinary(unsigned int n, int *chnum);
 
 #endif
