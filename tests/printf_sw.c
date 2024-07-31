@@ -6,16 +6,16 @@
  */
 int _printf(const char *format, ...)
 {
-	int len = strlen(format);
-	int i, chnum = 0;
+	const char *f = format;
+	int chnum = 0;
 	va_list args;
 
 	va_start(args, format);
-	for (i = 0; i < len; i++)
+	while (*f != '\0')
 	{
-		if (format[i] == '%')
+		if (*f == '%')
 		{
-			char nextchar = format[++i];
+			char nextchar = *(++f);
 
 			switch (nextchar)
 			{
@@ -36,13 +36,14 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					wchar('%', &chnum);
-					wchar(format[i], &chnum);
+					wchar(*f, &chnum);
 			}
 		}
 		else
 		{
-			wchar(format[i], &chnum);
+			wchar(*f, &chnum);
 		}
+		f++;
 	}
 	va_end(args);
 	return (chnum);
