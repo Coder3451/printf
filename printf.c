@@ -6,8 +6,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int len = strlen(format);
-	int i, chnum = 0;
+	int len = strlen(format), i, chnum = 0;
 	va_list args;
 
 	va_start(args, format);
@@ -24,10 +23,6 @@ int _printf(const char *format, ...)
 			else if (nextchar == 's')
 			{
 				wstring(va_arg(args, char *), &chnum);
-			}
-			else if (nextchar  == 'd' ||  nextchar == 'i')
-			{
-				wnum(va_arg(args, int), &chnum);
 			}
 			else if (nextchar == '%')
 			{
