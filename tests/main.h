@@ -15,4 +15,5 @@ void whexadec(unsigned int num, int *chnum, int upper);
 void wptr(void *ptr, int *chnum);
 void wbinary(unsigned int n, int *chnum);
 
+void spec_handle(char specifier, va_list args, int *chnum);
 #endif
