@@ -8,6 +8,7 @@
  *
  * Return: void
  */
+
 void spec_handle(char specifier, va_list args, int *chnum)
 {
 	switch (specifier)
