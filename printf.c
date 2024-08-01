@@ -2,6 +2,7 @@
 /**
  * _printf - produces output according to format
  * @format: character string
+ *
  * Return: chnum
  */
 int _printf(const char *format, ...)
