@@ -5,6 +5,7 @@
  * wuns - writes unsigned integer
  * @num: input unsigned integer
  * @chnum: couts printed
+ *
  * Return: void
  */
 
