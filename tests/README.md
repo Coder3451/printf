@@ -1,1 +1,1 @@
-folder to collect tests files, main.c files..
+# folder to collect tests files, main.c files..
