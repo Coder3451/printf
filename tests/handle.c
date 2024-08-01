@@ -17,7 +17,7 @@ void spec_handle(char specifier, va_list args, int *chnum)
 		case 's':
 			wstring(va_arg(args, char *), chnum);
 			break;
-		case 'd' || 'i':
+		case 'd': case 'i':
 			wnum(va_arg(args, int), chnum);
 			break;
 		case '%':

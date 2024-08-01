@@ -13,34 +13,37 @@ void whexadec(unsigned int num, int *chnum, int upper)
 {
 	char buffer[50];
 	int ln = 0;
-	char offset;
+	char off;
 
 	if (upper)
 	{
-		offset = 'A' - 10;
+		off = 'A' - 10;
 	}
 	else
 	{
-		offset = 'a' - 10;
+		off = 'a' - 10;
 	}
 	if (num == 0)
 	{
 		buffer[ln++] = '0';
 	}
-	while (num > 0)
+	else
 	{
-		int digit = num % 16;
+		while (num > 0)
+		{	
+			int d = num % 16;
 
-		if (digit < 10)
-		{
-			buffer[ln++] = digit + '0';
-		}
-		else
-		{
-			buffer[ln++] = digit + offset;
-		}
+			if (d < 10)
+			{
+				buffer[ln++] = d + '0';
+			}
+			else
+			{
+				buffer[ln++] = d + off;
+			}
 
-		num = num / 16;
+			num = num / 16;
+		}
 	}
 	while (--ln >= 0)
 	{
