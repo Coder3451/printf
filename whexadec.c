@@ -30,7 +30,7 @@ void whexadec(unsigned int num, int *chnum, int upper)
 	else
 	{
 		while (num > 0)
-		{	
+		{
 			int d = num % 16;
 
 			if (d < 10)

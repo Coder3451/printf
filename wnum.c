@@ -12,11 +12,11 @@ void wnum(int num, int *chnum)
 {
 	char buffer[50];
 	int i = 0;
-	int n = i - 1;
+	int neg = 0;
 
 	if (num < 0)
 	{
-		wchar('-', chnum);
+		neg = 1;
 		num = -num;
 	}
 
@@ -33,11 +33,12 @@ void wnum(int num, int *chnum)
 		}
 	}
 
-	buffer[i] = '\0';
-
-	while (n >= 0) 
+	if (neg)
 	{
-		wchar(buffer[n], chnum);
-		n--;
+		wchar('-', chnum);
+	}
+	while (i > 0)
+	{
+		wchar(buffer[--i], chnum);
 	}
 }

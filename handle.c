@@ -19,7 +19,7 @@ void spec_handle(char specifier, va_list args, int *chnum)
 			break;
 		case 'd':
 			wnum(va_arg(args, int), chnum);
-			break;	
+			break;
 		case 'i':
 			wnum(va_arg(args, int), chnum);
 			break;
@@ -30,7 +30,7 @@ void spec_handle(char specifier, va_list args, int *chnum)
 			wbinary(va_arg(args, unsigned int), chnum);
 			break;
 		case 'u':
-			wunsigned(va_arg(args, unsigned int), chnum);
+			wuns(va_arg(args, unsigned int), chnum);
 			break;
 		case 'x':
 			whexadec(va_arg(args, unsigned int), chnum, 0);

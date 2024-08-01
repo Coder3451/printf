@@ -2,13 +2,13 @@
 
 
 /**
- * wunsigned - writes unsigned integer
+ * wuns - writes unsigned integer
  * @num: input unsigned integer
  * @chnum: couts printed
  * Return: void
  */
 
-void wunsigned(unsigned int num, int *chnum)
+void wuns(unsigned int num, int *chnum)
 {
 	char buffer[50];
 	int ln = 0;
