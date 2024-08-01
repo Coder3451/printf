@@ -4,6 +4,7 @@
  * woctal - unsigned int as octal number
  * @num: input number
  * @chnum: counts printed characters
+ *
  * Return: void
  */
 
