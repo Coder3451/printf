@@ -6,7 +6,6 @@
  * @s: string
  *
  * Return: void
- *
  */
 
 void wstring(char *s, int *chnum)
