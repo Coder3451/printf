@@ -17,7 +17,10 @@ void spec_handle(char specifier, va_list args, int *chnum)
 		case 's':
 			wstring(va_arg(args, char *), chnum);
 			break;
-		case 'd': case 'i':
+		case 'd':
+			wnum(va_arg(args, int), chnum);
+			break;
+		case 'i':
 			wnum(va_arg(args, int), chnum);
 			break;
 		case '%':
@@ -25,6 +28,18 @@ void spec_handle(char specifier, va_list args, int *chnum)
 			break;
 		case 'b':
 			wbinary(va_arg(args, unsigned int), chnum);
+			break;
+		case 'u':
+			wuns(va_arg(args, unsigned int), chnum);
+			break;
+		case 'x':
+			whexadec(va_arg(args, unsigned int), chnum, 0);
+			break;
+		case 'X':
+			whexadec(va_arg(args, unsigned int), chnum, 1);
+			break;
+		case 'o':
+			woctal(va_arg(args, unsigned int), chnum);
 			break;
 		default:
 			wchar('%', chnum);

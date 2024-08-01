@@ -16,10 +16,13 @@ void woctal(unsigned int num, int *chnum)
 	{
 		buffer[ln++] = '0';
 	}
-	while (num > 0)
+	else
 	{
-		buffer[ln++] = (num % 8) + '0';
-		num = num / 8;
+		while (num > 0)
+		{
+			buffer[ln++] = (num % 8) + '0';
+			num = num / 8;
+		}
 	}
 	while (--ln >= 0)
 	{
