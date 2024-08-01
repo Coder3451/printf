@@ -5,6 +5,7 @@
  * wnum - converts int into string
  * @num: input number
  * @chnum: counts number cof characters printed
+ *
  * Return: void
  */
 
