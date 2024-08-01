@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _printf - produces output according to format
+ * _printf - produces output according to the format
  * @format: character string
  *
  * Return: chnum
