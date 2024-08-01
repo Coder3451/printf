@@ -1,10 +1,12 @@
 #include "main.h"
+
 /**
  * _printf - produces output according to the format
  * @format: character string
  *
  * Return: chnum
  */
+
 int _printf(const char *format, ...)
 {
 	const char *f = format;
